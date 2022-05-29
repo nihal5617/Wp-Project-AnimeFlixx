@@ -1,0 +1,11 @@
+@media screen and (max-width: 728px) {
+    img{
+        height: 428px !important;
+    }
+}
+
+@media screen and (max-width: 512px) {
+    img{
+        height: 240px !important;
+    }
+}
