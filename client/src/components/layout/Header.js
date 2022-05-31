@@ -122,13 +122,13 @@ const Header = ({
                     )}
                   >
                     <li>
-                      <Link to="#0" onClick={closeMenu}>
+                      <Link to="/privacy" onClick={closeMenu}>
                         Privacy
                       </Link>
                     </li>
                     <li>
-                      <Link to="#0" onClick={closeMenu}>
-                        Help
+                      <Link to="/pricing" onClick={closeMenu}>
+                        Pricing
                       </Link>
                     </li>
                     {user ? (

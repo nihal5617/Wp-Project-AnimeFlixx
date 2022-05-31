@@ -12,6 +12,8 @@ import Home from "./views/Home";
 import Auth from "./views/Auth/Auth";
 import Main from "./views/Main";
 import Modal from "./components/elements/Modal";
+import Privacy from "./views/Privacy";
+import Pricing from "./views/Pricing";
 
 // Initialize Google Analytics
 ReactGA.initialize(process.env.REACT_APP_GA_CODE);
@@ -69,6 +71,8 @@ const App = () => {
               component={Modal}
               layout={LayoutDefault}
             />
+            <AppRoute path="/privacy" component={Privacy} layout={LayoutDefault} />
+            <AppRoute path="/pricing" component={Pricing} layout={LayoutDefault} />
           </Switch>
         )}
       />
