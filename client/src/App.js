@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect,useState } from "react";
 import { useLocation, Switch } from "react-router-dom";
 import AppRoute from "./utils/AppRoute";
 import ScrollReveal from "./utils/ScrollReveal";
@@ -24,12 +24,14 @@ const trackPage = (page) => {
 const App = () => {
   const childRef = useRef();
   let location = useLocation();
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
 
   useEffect(() => {
     const page = location.pathname;
     document.body.classList.add("is-loaded");
     childRef.current.init();
     trackPage(page);
+    setUser(JSON.parse(localStorage.getItem("profile")));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location]);
 
@@ -39,24 +41,37 @@ const App = () => {
         ref={childRef}
         children={() => (
           <Switch>
-            <AppRoute exact path="/" component={Home} layout={LayoutDefault} />
+            {user ? (
+              <AppRoute
+                exact
+                path="/"
+                component={Main}
+                layout={LayoutDefault}
+              />
+            ) : (
+              <AppRoute exact path="/" component={Home} layout={LayoutDefault}/>
+            )}
+            {/* <AppRoute exact path="/" component={Home} layout={LayoutDefault} /> */}
             <AppRoute
               exact
               path="/auth"
               component={Auth}
               layout={LayoutDefault}
             />
-            <AppRoute
+            {/* <AppRoute
               exact
               path="/main"
               component={Main}
               layout={LayoutDefault}
+            /> */}
+            <AppRoute
+              path="/anime/:video"
+              component={Modal}
+              layout={LayoutDefault}
             />
-            <AppRoute path="/anime/:video" component={Modal} layout={LayoutDefault} />
           </Switch>
         )}
       />
-      {/* <Home/> */}
     </>
   );
 };

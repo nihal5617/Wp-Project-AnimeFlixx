@@ -8,7 +8,6 @@ const Main = () => {
     <div>
       <Banner />
       <AllShows />
-      {/* <Modal show="true" video="https://www.youtube.com/embed/E7wJTI-1dvQ" videoTag="iframe" children="A show" closeHidden="false"/> */}
     </div>
   );
 };

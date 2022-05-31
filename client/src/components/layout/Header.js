@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import classNames from "classnames";
 import { Link } from "react-router-dom";
 import Logo from "./partials/Logo";
+import {useLocation} from 'react-router-dom';
 
 const propTypes = {
   navPosition: PropTypes.string,
@@ -33,18 +34,26 @@ const Header = ({
 
   const nav = useRef(null);
   const hamburger = useRef(null);
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
+  const location = useLocation();
 
   useEffect(() => {
     isActive && openMenu();
     document.addEventListener("keydown", keyPress);
     document.addEventListener("click", clickOutside);
+        setUser(JSON.parse(localStorage.getItem('profile')));
     return () => {
       document.removeEventListener("keydown", keyPress);
       document.removeEventListener("click", clickOutside);
       closeMenu();
     };
-  });
+    
+  },[location]);
+
+  const handleLogout=()=>{
+    localStorage.removeItem('profile');
+    setUser(null);
+  }
 
   const openMenu = () => {
     document.body.classList.add("off-nav-is-active");
@@ -128,8 +137,13 @@ const Header = ({
                             Watch Later
                           </Link></li>                        
                         <li>
-                          <Link to="/profile" onClick={closeMenu}>
+                        <Link to="/profile" onClick={closeMenu}>
                             Profile
+                          </Link>
+                        </li>
+                        <li>
+                          <Link to="/" onClick={handleLogout}>
+                            Logout
                           </Link>
                         </li>
                       </>

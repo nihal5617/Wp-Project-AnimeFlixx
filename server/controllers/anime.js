@@ -1,55 +1,10 @@
-import AnimeData from "@dovakiin0/anime-data"
+import AnimeModal from "../models/anime.js";
 
-const Anime = new AnimeData();
-
-module.exports = {
-  getPopular: async (req, res) => {
-    Anime.getPopular(req.params.page)
-      .then((animes) => {
-        res.status(200).send(animes);
-      })
-      .catch((err) => {
-        res.status(400).send(err);
-      });
-  },
-
-  getEpisodeFix: async (req, res) => {
-    Anime.getEpisodeFix(req.body.slug)
-      .then((episodes) => {
-        res.status(200).send(episodes);
-      })
-      .catch((err) => res.status(400).send(err));
-  },
-
-  getRecent: async (req, res) => {
-    Anime.getRecent(req.params.page)
-      .then((animes) => res.status(200).send(animes))
-      .catch((err) => {
-        res.status(400).send(err);
-      });
-  },
-
-  getAnime: (req, res) => {
-    Anime.searchAnime(req.params.name)
-      .then((animes) => res.status(200).send(animes))
-      .catch((err) => {
-        res.status(400).send(err);
-      });
-  },
-
-  getAnimeDetails: async (req, res) => {
-    Anime.getAnimeInfo(req.body.uri)
-      .then((animes) => res.status(200).send(animes))
-      .catch((err) => {
-        res.status(400).send(err);
-      });
-  },
-
-  getAnimeEpisodes: (req, res) => {
-    Anime.getEpisode(req.body.slug, req.body.ep)
-      .then((episodes) => res.status(200).send(episodes))
-      .catch((err) => {
-        res.status(400).send(err);
-      });
-  },
-};
+export const getAnime = async (req, res) => {
+    try {
+        const result = await AnimeModal.find({});
+        res.status(200).json( result );
+    } catch (error) {
+        res.status(500).json({ message: "Something went wrong" });
+    }
+}
