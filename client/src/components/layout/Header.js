@@ -137,8 +137,8 @@ const Header = ({
                             Watch Later
                           </Link></li>                        
                         <li>
-                        <Link to="/profile" onClick={closeMenu}>
-                            Profile
+                        <Link to="/" onClick={closeMenu}>
+                            {user.result.name}
                           </Link>
                         </li>
                         <li>
@@ -163,7 +163,7 @@ const Header = ({
                         <Link
                           to="/auth"
                           className="button button-primary button-wide-mobile button-sm"
-                          style={{backgroundColor: '#2b89bf',}}
+                          // style={{backgroundColor: '#2b89bf',}}
                           onClick={closeMenu}
                         >
                           Sign up

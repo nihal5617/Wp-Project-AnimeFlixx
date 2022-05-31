@@ -16,6 +16,7 @@ import PlayCircleIcon from "@mui/icons-material/PlayCircle";
 const images = [
   {
     id: 1,
+    img:"https://cdn.wallpapersafari.com/25/24/sfNOFb.jpg",
   },
   {
     id: 2,
@@ -53,45 +54,17 @@ const Banner = () => {
             title="Title"
           >
             <img
+            className="img1"
               // key={uuid()}
-              src="https://cdn.wallpapersafari.com/25/24/sfNOFb.jpg"
+              src="https://giffiles.alphacoders.com/339/33944.gif"
               alt="Alternative"
               // className="h-[220px] md:h-[325px]"
               style={{
-                height: "628px",
+                height: "528px",
                 width: "100%",
                 objectFit: "fill",
               }}
             />
-            {/* <Typography
-              noWrap
-              component="div"
-              sx={{ display: { xs: "none", sm: "block" } }}
-              style={{ position: "absolute", bottom: "10%", left: "40px" }}
-            >
-              <b>Watch This Movie Now</b>
-              <p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting{" "}
-                <br />
-                industry. Lorem Ipsum has been the industry's standard dummy{" "}
-                <br />
-                text ever since the 1500s, when an unknown printer took a galley
-                <br />
-                of type and scrambled it to make a type specimen book. It has
-                <br />
-                survived not only five centuries, but also the leap into
-                <br />
-              </p>
-            </Typography> */}
-            <Button
-              style={{ position: "absolute", bottom: "5%", left: "40px",padding:"5px" }}
-              variant="contained"
-              data-bs-toggle="tooltip"
-              data-bs-placement="top"
-              title="Play"
-            >
-             Play
-            </Button>
           </SwiperSlide>
         ))}
       </Swiper>

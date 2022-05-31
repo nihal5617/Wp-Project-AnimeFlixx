@@ -26,6 +26,7 @@ export const Card = ({delay,img,alt,name,desc}) => {
                         <Image
                             src={img}
                             alt={alt}
+                            // style={{height:"350px",width:"100%",objectFit:"fill"}}
                         />
                     </div>
                 </div>

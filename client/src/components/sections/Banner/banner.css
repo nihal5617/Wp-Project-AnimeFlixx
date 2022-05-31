@@ -1,11 +1,11 @@
 @media screen and (max-width: 728px) {
-    img{
+    .img1{
         height: 428px !important;
     }
 }
 
 @media screen and (max-width: 512px) {
-    img{
+    .img1{
         height: 240px !important;
     }
 }

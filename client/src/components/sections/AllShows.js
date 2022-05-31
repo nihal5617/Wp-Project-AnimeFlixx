@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import classNames from "classnames";
 import { SectionTilesProps } from "../../utils/SectionProps";
 import SectionHeader from "./partials/SectionHeader";
 import { Card } from "../elements/Card";
 import { CandlestickChartRounded } from "@mui/icons-material";
 import { useHistory } from "react-router-dom"
+import * as api from "../../api/index.js";
 
 const sectionHeader = {
   title: "Popular shows",
@@ -93,21 +94,27 @@ const AllShows = ({
     pushLeft && "push-left"
   );
   const navigateClicked=(data)=>{
-    navigate.push('/anime/uE7ESnbRJD4')
+    navigate.push('/anime/'+data);
   }
+  const [animeData, setAnimeData] = React.useState([]);
+  useEffect(() => {
+    async function fetchData() {
+      const { data } = await api.getAnime();
+      setAnimeData(data);
+    }
+    fetchData();
+  }, [])
 
   return (
-    // <section {...props} className={outerClasses}>
       <div className="">
         <div className={innerClasses}>
-          {/* <h2 className="split-item-content center-content-mobile reveal-from-left container" style={{textDecoration:"underline"}}>Popular Shows</h2> */}
           <div className={tilesClasses}>
-            {cardData.map((data) => (
-              <div onClick={()=>{navigateClicked(data.name)}}>
+            {animeData.map((data) => (
+              <div onClick={()=>{navigateClicked(data.video)}}>
                 <Card
-                  img={data.img}
+                  img={data.thumbnail}
                   delay={data.delay}
-                  alt={data.alt}
+                  alt={data.name}
                   name={data.name}
                   desc={data.desc}
                 />
@@ -116,7 +123,6 @@ const AllShows = ({
           </div>
         </div>
       </div>
-    // </section>
   );
 };
 
