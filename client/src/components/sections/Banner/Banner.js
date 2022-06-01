@@ -10,22 +10,23 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import "./banner.css";
-import { Button, Typography } from "@mui/material";
-import PlayCircleIcon from "@mui/icons-material/PlayCircle";
 
 const images = [
   {
     id: 1,
-    img:"https://cdn.wallpapersafari.com/25/24/sfNOFb.jpg",
+    img:"https://giffiles.alphacoders.com/339/33944.gif",
   },
   {
     id: 2,
+    img:require("../../../assets/images/1_banner.gif")
   },
   {
     id: 3,
+    img:"https://c.tenor.com/pK8A4SGMLsIAAAAd/anime-gif.gif"
   },
   {
     id: 4,
+    img:"https://i.gifer.com/Ugsf.gif"
   },
 ];
 
@@ -56,11 +57,11 @@ const Banner = () => {
             <img
             className="img1"
               // key={uuid()}
-              src="https://giffiles.alphacoders.com/339/33944.gif"
+              src={image.img}
               alt="Alternative"
               // className="h-[220px] md:h-[325px]"
               style={{
-                height: "528px",
+                height: "598px",
                 width: "100%",
                 objectFit: "fill",
               }}
